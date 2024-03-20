@@ -3,107 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Member and Staff Registration</title>
+    <title>Document</title>
     <style>
+        /* CSS styles */
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            margin: 10px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        form {
-            background-color: white;
+            background-color: yellowgreen;
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            width: 300px;
-            margin: 20px auto;
         }
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
+        .members,
+        .staff,
+        .report {
+            text-align: center;
+            margin-bottom: 20px;
+           
         }
-        input[type="text"],
-        input[type="password"],
-        input[type="file"],
-        input[type="datetime-local"],
-        select {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type="submit"],
-        button[type="submit"] {
-            background-color: #4CAF50;
+        .members button,
+        .staff button,
+        .report button {
+            background-color: red;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-top: 10px;
+            font-size: 50px;
+            transition: background-color 0.3s;
+            width: 40%;
+            margin-right: 10px;
         }
-        input[type="submit"]:hover,
-        button[type="submit"]:hover {
+        .members button:hover,
+        .staff button:hover,
+        .report button:hover {
             background-color: #45a049;
+        }
+        .report-dropdown {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .report-dropdown button {
+            width: 100%;
         }
     </style>
 </head>
 <body>
+    <div class="members">
+        <a href="memfrm.php"><button>MEMBERS</button></a>
+    </div>
+    
+    <div class="staff">
+        <a href="stafrm.php"><button>STAFF</button></a>
+    </div>
 
-<button onclick="showMembersForm()">Members</button>
-<button onclick="showStaffForm()">Staff</button>
+    <div class="report">
+        <button onclick="toggleDropdown()">REPORT</button>
+        <div id="reportDropdown" class="report-dropdown">
+            <a href="srepor.php"><button>Staff Report</button></a>
+            <a href="memrep.php"><button>Members Report</button></a>
+        </div>
+    </div>
 
-<div id="membersForm" style="display: none;">
-    <form method="post" action="memfrm.php">
-        <!-- Members form fields -->
-        <label for="registration_number">Registration Number:</label>
-        <input type="text" name="registration_number" id="registration_number" required><br>
-
-        <!-- Other members form fields -->
-
-        <input type="submit" name="submit" value="Submit">
-    </form>
-</div>
-
-<div id="staffForm" style="display: none;">
-    <form method="post" action="stafrm.php">
-        <!-- Staff form fields -->
-        <label for="staff_number">Staff Number:</label>
-        <input type="text" name="staff_number" id="staff_number" required><br>
-
-        <!-- Other staff form fields -->
-
-        <button type="submit" name="submit">Submit</button>
-    </form>
-</div>
-
-<script>
-    function showMembersForm() {
-        document.getElementById("mem").style.display = "block";
-        document.getElementById("staffForm").style.display = "none";
-    }
-
-    function showStaffForm() {
-        document.getElementById("membersForm").style.display = "none";
-        document.getElementById("staffForm").style.display = "block";
-    }
-</script>
-
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("reportDropdown");
+            if (dropdown.style.display === "block") {
+                dropdown.style.display = "none";
+            } else {
+                dropdown.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>

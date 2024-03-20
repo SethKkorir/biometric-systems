@@ -35,7 +35,7 @@
             box-sizing: border-box;
         }
         input[type="submit"] {
-            background-color: #4CAF50;
+            background-color: #4CAF50;`
             color: white;
             padding: 10px 20px;
             border: none;
