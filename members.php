@@ -1,6 +1,7 @@
 <?php
 require_once 'config.php'; 
 
+
 // Insert Data
 if(isset($_POST['submit'])) {
     // Retrieve form data

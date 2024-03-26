@@ -16,7 +16,6 @@
         .report {
             text-align: center;
             margin-bottom: 20px;
-           
         }
         .members button,
         .staff button,
@@ -51,10 +50,12 @@
     </style>
 </head>
 <body>
+
+
     <div class="members">
         <a href="memfrm.php"><button>MEMBERS</button></a>
     </div>
-    
+
     <div class="staff">
         <a href="stafrm.php"><button>STAFF</button></a>
     </div>
@@ -67,6 +68,9 @@
         </div>
     </div>
 
+    <!-- API Payload Container -->
+    <div id="apiPayloadContainer"></div>
+
     <script>
         function toggleDropdown() {
             var dropdown = document.getElementById("reportDropdown");
@@ -76,6 +80,18 @@
                 dropdown.style.display = "block";
             }
         }
+
+        // Fetch API data
+        fetch('https://api.main.com/data')
+            .then(response => response.json())
+            .then(data => {
+                // Handle the API payload
+                const apiPayloadContainer = document.getElementById('apiPayloadContainer');
+                apiPayloadContainer.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            })
+            .catch(error => {
+                console.error('Error fetching API data:', error);
+            });
     </script>
 </body>
 </html>
